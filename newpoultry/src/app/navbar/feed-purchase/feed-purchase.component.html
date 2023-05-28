@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Poultry System</title>
+</head>
+<body>
+	<section>
+		<div class="eggsales" #test1>
+			<form method="post" [formGroup]="formdata" (ngSubmit)="feedpurchase(formdata.value)">
+				<div class="form-group">
+					<label>Feed Quantity</label>
+					<input type="number" name="quantity" formControlName="quantity" placeholder="Enter Feed Quantity" required>
+				</div>
+				<div class="form-group">
+					<label>Price</label>
+					<input type="number" name="price" formControlName="price" placeholder="Enter Price" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" formControlName="date" required>
+				</div>
+				<button>Save</button>
+			</form>
+		</div>
+		<div class="eggsales-update" #test>
+			<form method="post">
+				<div class="form-group">
+					<label>Feed Quantity</label>
+					<input type="number" name="quantity" [(ngModel)]="updatedata.quantity" placeholder="Enter Feed Quantity" required>
+				</div>
+				<div class="form-group">
+					<label>Price</label>
+					<input type="number" name="price" [(ngModel)]="updatedata.price" placeholder="Enter Price" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" [(ngModel)]="updatedata.date" required>
+				</div>
+				<button (click)="Updateeggsales()">Save</button>
+			</form>
+		</div>
+		<div class="eggsales-table">
+			<table>
+				<thead>
+					<tr>
+						<th>Sl No</th>
+						<th>Feed Quantity</th>
+						<th>Price</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let feed of Feedpurchase">
+						<td>{{feed.sl}}</td>
+						<td>{{feed.Quantity}}</td>
+						<td>{{feed.Price}}</td>
+						<td>{{feed.Date|date:'shortDate'}}</td>
+						<td><button class="edit"><a routerLink="/navbar/FeedPurchase/{{feed.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

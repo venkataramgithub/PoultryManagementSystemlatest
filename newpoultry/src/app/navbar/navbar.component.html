@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Famous Poultry Farm</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<h2>Famous</h2>
+			<p>Poultry Farm</p>
+		</div>
+		<div class="logout">
+			<i class="fas fa-sign-out"></i>
+			<button>Logout</button>
+		</div>
+	</header>
+	<section>
+		<div class="navbar">
+			<ul>
+				<li><i class="fas fa-home"></i><a routerLink="/navbar/dashboard">Dashboard</a></li>
+				<li>Eggs
+					<div class="sub-list">
+						<p><span class="material-symbols-outlined">monitoring</span><i class="fa fa-line-chart"></i><a routerLink="/navbar/EggSales">Sales</a></p>
+						<p><span class="material-symbols-outlined">magnify_docked</span><a routerLink="/navbar/EggProduction">Production</a></p>
+					</div>
+				</li>
+				<li>Birds
+					<div class="sub-list">
+						<p><span class="material-symbols-outlined">monitoring</span><a routerLink="/navbar/BirdsSales">Sales</a></p>
+						<p><i class="fas fa-cart-plus"></i><a routerLink="/navbar/BirdsPurchase">Purchase</a></p>
+						<p><span class="material-symbols-outlined">work_alert</span><a routerLink="/navbar/Mortality">Mortality</a></p>
+					</div>
+				</li>
+				<li>Feed
+					<div class="sub-list">
+						<p><i class="fas fa-cart-plus"></i><a routerLink="/navbar/FeedPurchase">Purchase</a></p>
+						<p><span class="material-symbols-outlined">counter_0</span><a routerLink="/navbar/FeedConsumption">Consumption</a></p>
+					</div>
+				</li>
+				<li>Person's Information
+					<div class="sub-list">
+						<p><i class="fas fa-user"></i><a routerLink="/navbar/SalesPerson">Sales</a></p>
+						<p><i class="fas fa-user"></i><a routerLink="/navbar/PurchasePerson">Purchase</a></p>
+					</div>
+				</li>
+				<li><span class="material-symbols-outlined">paid</span><a routerLink="/navbar/PayRoll">PayRoll</a></li>
+				<li><i class="fas fa-users"></i><a routerLink="/navbar/Employees">Employees</a></li>
+				<li><span class="material-symbols-outlined">payments</span><a routerLink="/navbar/DailyPrices">Daily Prices</a></li>
+			</ul>
+		</div>
+		<div class="router-link">
+			<router-outlet></router-outlet>
+		</div>
+	</section>
+</body>
+</html>

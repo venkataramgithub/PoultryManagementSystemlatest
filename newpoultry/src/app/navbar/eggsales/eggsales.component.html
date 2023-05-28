@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Poultry System</title>
+</head>
+<body>
+	<section>
+		<div class="eggsales" #test1>
+			<form method="post" [formGroup]="formdata" (ngSubmit)="eggsales(formdata.value)">
+				<div class="form-group">
+					<label>Id</label>
+					<input type="number" name="id" formControlName="id"placeholder="Enter Sales Id" required>
+				</div>
+				<div class="form-group">
+					<label>Number of Eggs</label>
+					<input type="number" name="numberofeggs" formControlName="numberofeggs" placeholder="Enter No Of Eggs" required>
+				</div>
+				<div class="form-group">
+					<label>Amounts</label>
+					<input type="number" name="amount" formControlName="amount" placeholder="Enter Amount" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" formControlName="date" required>
+				</div>
+				<button>Save</button>
+			</form>
+		</div>
+		<div class="eggsales-update" #test>
+			<form method="post">
+				<div class="form-group">
+					<label>Number of Eggs</label>
+					<input type="number" name="numberofeggs" [(ngModel)]="updatedata.numberofeggs" placeholder="Enter No Of Eggs" required>
+				</div>
+				<div class="form-group">
+					<label>Amounts</label>
+					<input type="number" name="amount" [(ngModel)]="updatedata.amount" placeholder="Enter Amount" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" [(ngModel)]="updatedata.date">
+				</div>
+				<button (click)="Updateeggsales()">Save</button>
+			</form>
+		</div>
+		<div class="filter-form">
+			<form method="post" [formGroup]="searchdata" (ngSubmit)="searcheggsales(searchdata.value)">
+				<div class="form-group">
+					<label>From Date</label>
+					<input type="date" name="fromdate" formControlName="fromdate" required>
+				</div>
+				<div class="form-group">
+					<label>To Date</label>
+					<input type="date" name="todate" formControlName="todate" required>
+				</div>
+				<button>Filter</button>
+			</form>
+
+		</div>
+		<div class="eggsales-table">
+			<button class="allrows" (click)="AllRows()">All Rows</button>
+			<table>
+				<thead>
+					<tr>
+						<th>Sl No</th>
+						<th>Number of Eggs</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngIf="row">{{row}}</tr>
+					<tr *ngFor="let egg of Eggsales">
+						<td>{{egg.id}}</td>
+						<td>{{egg.NumberofEggs}}</td>
+						<td>{{egg.Amount}}</td>
+						<td>{{egg.Date|date:'shortDate'}}</td>
+						<td><button class="edit"><a routerLink="/navbar/EggSales/{{egg.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Poultry System</title>
+</head>
+<body>
+	<section>
+		<div class="eggsales" #test1>
+			<form method="post" [formGroup]="formdata" (ngSubmit)="birdspurchase(formdata.value)">
+				<div class="form-group">
+					<label>Id</label>
+					<input type="number" name="id" formControlName="id" placeholder="Enter Purchase Id" required>
+				</div>
+				<div class="form-group">
+					<label>Number of Chicks</label>
+					<input type="number" name="noofchicks" formControlName="noofchicks" placeholder="Enter No Of Chicks" required>
+				</div>
+				<div class="form-group">
+					<label>Amounts</label>
+					<input type="number" name="amount" formControlName="amount" placeholder="Enter Amount" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" formControlName="date" required>
+				</div>
+				<button>Save</button>
+			</form>
+		</div>
+		<div class="eggsales-update" #test>
+			<form method="post">
+				<div class="form-group">
+					<label>Number of Chicks</label>
+					<input type="number" name="noofchicks" [(ngModel)]="updatedata.numberofchicks" placeholder="Enter No Of Chicks" required>
+				</div>
+				<div class="form-group">
+					<label>Amounts</label>
+					<input type="number" name="amount" [(ngModel)]="updatedata.amount" placeholder="Enter Amount" required>
+				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="date" name="date" [(ngModel)]="updatedata.date" required>
+				</div>
+				<button (click)="Updateeggsales()">Save</button>
+			</form>
+		</div>
+		<div class="filter-form">
+			<form method="post" [formGroup]="searchdata" (ngSubmit)="searchbirdpurchase(searchdata.value)">
+				<div class="form-group">
+					<label>From Date</label>
+					<input type="date" name="fromdate" formControlName="fromdate" required>
+				</div>
+				<div class="form-group">
+					<label>To Date</label>
+					<input type="date" name="todate" formControlName="todate" required>
+				</div>
+				<button>Filter</button>
+			</form>
+		</div>
+		<div class="eggsales-table">
+			<div class="search-form">
+				<form method="post" [formGroup]="searchid" (ngSubmit)="searchiddata(searchid.value)">
+					<input type="search" name="search" #destroy formControlName="search" placeholder="Enter To Search"><button><i class="fas fa-search"></i></button> 
+				</form>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Sl No</th>
+						<th>Number of Chicks</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngIf="row">{{row}}</tr>
+					<tr *ngFor="let bird of Birdsales">
+						<td>{{bird.id}}</td>
+						<td>{{bird.NoofChicks}}</td>
+						<td>{{bird.Amount}}</td>
+						<td>{{bird.Date|date:'shortDate'}}</td>
+						<td><button class="edit"><a routerLink="/navbar/BirdsPurchase/{{bird.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

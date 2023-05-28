@@ -1,0 +1,96 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+header{
+	padding:5px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	background-color: white;
+	position: fixed;
+	left: 0%;
+	top: 0%;
+	z-index: 1000;
+	right: 0%;
+	box-shadow: 0px 0px 2px 2px rgba(0, 0, 0,0.1);
+}
+header .logo h2{
+	font-size: 35px;
+	font-family:verdana;
+	color:orange;
+}
+header .logo p{
+	font-family: monospace;
+	font-size: 16px;
+	margin-top: -7px;
+	margin-left: 40px;
+	color:darkcyan;
+}
+header .logout button{
+	margin: 15px;
+	border: none;
+	outline: none;
+	font-size: 18px;
+}
+section{
+	display: flex;
+	flex-direction: row;
+	background-color: #f6f6f6;
+	min-height: 600px;
+	margin-top:50px;
+	left: 0%;
+	width:100%;
+	right: 0%;
+	max-height:fit-content;
+
+}
+section .navbar{
+	height:600px;
+	width: 230px;
+	padding:20px 5px;
+	background-color: #212a3e;
+	position: fixed;
+	left: 0%;
+	box-shadow: 0px 0px 2px 2px rgba(0, 0, 0,.1);
+}
+.navbar ul{
+	list-style-type: none;
+	margin-top: 15px;
+}
+.navbar ul li{
+	padding:5px 0px;
+	padding-left:10px;
+	color: white;
+	font-size: 20px;
+	font-family:serif;
+}
+.navbar ul li i, .navbar ul li span{
+	font-size: 19px;
+	margin-right: 5px;
+}
+
+.navbar ul li .sub-list{
+	display: block;
+	margin-top: 3px;
+}
+.sub-list p{
+	font-family: sans-serif;
+	font-size: 17px;
+	margin:4px 0px;
+	line-height: 22px;
+}
+.sub-list p span{
+	color: white;
+	font-size: 18px;
+	margin-right: 4px;
+}
+.navbar ul a{
+	color: white;
+	cursor:pointer;
+}
+.router-link{
+	width: 100%;
+}

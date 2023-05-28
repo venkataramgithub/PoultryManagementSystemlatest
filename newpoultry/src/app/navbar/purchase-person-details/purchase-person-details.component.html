@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Poultry System</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+	<section>
+		<div class="eggsales">
+			<form method="post" [formGroup]="formdata" (ngSubmit)="purchaseperson(formdata.value)"  autocomplete="off">
+				<div class="names">
+					<div class="form-group">
+						<label>First Name</label>
+						<input type="text" name="firstname" formControlName="firstname" placeholder="Enter First Name" required>
+					</div>
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" name="lastname" formControlName="lastname" placeholder="Enter Last Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input type="number" name="phone" formControlName="phone" placeholder="Enter Phone Number" required>
+				</div>
+				<div class="form-group">
+					<label>State</label>
+					<input type="text" name="state" formControlName="state" placeholder="Enter State" required>
+				</div>
+				<div class="form-group">
+					<label>Location</label>
+					<input type="text" name="location" formControlName="location" placeholder="Enter Location" required>
+				</div>
+				<div class="form-group">
+					<label>Organization Name</label>
+					<input type="text" name="organizationname" formControlName="organizationname" placeholder="Enter Organization Name" required>
+				</div>
+				<button>Save</button>
+			</form>
+		</div>
+		<div class="eggsales-table">
+			<div class="search-form">
+				<form method="post" [formGroup]="searchdata" (ngSubmit)="Searchpurchaseperson(searchdata.value)">
+					<input type="search" name="search" #test formControlName="search" placeholder="Enter To Search"><button><i class="fas fa-search"></i></button>
+				</form> 
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Phone</th>
+						<th>State</th>
+						<th>Location</th>
+						<th>Organization Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let sales of Salespersondetails">
+						<td>{{sales.id}}</td>
+						<td>{{sales.FirstName}}</td>
+						<td>{{sales.LastName}}</td>
+						<td>{{sales.Phone}}</td>
+						<td>{{sales.State}}</td>
+						<td>{{sales.Location}}</td>
+						<td>{{sales.OrganizationName}}</td>
+						<td><button class="edit"><i class="fas fa-edit"></i></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

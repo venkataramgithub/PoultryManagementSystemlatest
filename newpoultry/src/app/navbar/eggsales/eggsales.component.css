@@ -1,0 +1,134 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+section{
+	min-height:600px;
+	max-height: fit-content;
+	padding: 20px;
+	background:#f6f6f6;
+	margin-left: 240px;
+}
+.eggsales{
+	margin:35px 150px;
+	width: 650px;
+	padding: 10px;
+	border:2px solid rgba(0, 0, 0,0.1);
+	border-radius: 5px;
+	background: white;
+}
+.eggsales-update{
+	width: 800px;
+	height: 340px;
+	background: white;
+	display: none;
+	padding:20px 140px;
+}
+.eggsales-update form{
+	width: 650px;
+	padding: 15px;
+	border:2px solid rgba(0, 0, 0,0.1);
+	border-radius: 5px;
+}
+.eggsales form .form-group,.eggsales-update form .form-group{
+	display: flex;
+	flex-direction: column;
+	margin:5px 0px;
+}
+.form-group label{
+	font-size: 18px;
+	margin-bottom:2px;
+}
+.form-group input{
+	border:2px solid rgba(0, 0, 0, .2);
+	outline: none;
+	border-radius: 4px;
+	height: 20px;
+	padding:6px;
+}
+.eggsales form button,.eggsales-update form button{
+	margin:8px;
+	background: green;
+	color: white;
+	border-radius: 5px;
+	border:1px solid rgba(0, 0, 0,.2);
+	padding:5px 10px;
+	font-size: 18px;
+
+}
+.eggsales-table{
+	width:800px;
+	height:350px;
+	background: white;
+	margin:0px 100px;
+	border: 1px solid rgba(0, 0, 0,.1);
+}
+.eggsales-table table{
+	width: 100%;
+	padding:10px;
+}
+table thead tr{
+	margin-bottom: 5px;
+	background:orange;
+	color: white;
+}
+table thead th{
+	border-bottom: 1px solid rgba(0, 0, 0, .3);
+	font-size: 20px;
+}
+table thead th,table tbody td{
+	text-align:left;
+	padding:5px;
+}
+table tbody td{
+	font-size: 18px;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+table tbody td button{
+	outline: none;
+	font-size:18px;
+	margin:2px 5px;
+	padding:2px 5px;
+	border: 1px solid rgba(0, 0, 0,.3);
+}
+table tbody td button a{
+	color: white;
+}
+table .edit{
+	background: green;
+	color: white;
+}
+table .delete{
+	background: red;
+	color: white;
+}
+.filter-form form{
+	display: flex;
+	flex-direction: row;
+	padding:10px;
+	margin-top: 15px;
+	margin-left: 400px;
+}
+.filter-form form .form-group{
+	display: flex;
+	flex-direction: column;
+	width:200px;
+}
+.filter-form form button{
+	width:80px;
+	font-size: 18px;
+	padding:5px;
+	height:35px;
+	margin-top:23px;
+	border:1px solid rgba(0, 0, 0, .2);
+	outline: none;
+	color: white;
+	background: darkcyan;
+}
+.allrows{
+	outline: none;
+	border:none;
+	background:pink;
+	padding: 5px;
+	font-size: 10px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Poultry System</title>
+</head>
+<body>
+	<section>
+		<div class="daily-prices">
+			<p>Today Prices</p>
+			<div class="row">
+				<p><i class="fas fa-egg"></i>Eggs:<span>{{eggprice}}</span></p>
+				<p>Chicken:<span>{{chickenprice}}</span></p>
+			</div>
+		</div>
+		<div class="availability">
+			<div class="total-customers">
+				<div class="cus-img card-1">
+					<span><i class="fas fa-user"></i></span>
+					<div class="column">
+						<p>{{sperson}}</p>
+						<p>Total Customers!</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totalcustomers" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+			<div class="total-customers">
+				<div class="cus-img card-2">
+					<span><i class="fas fa-cart-plus"></i></span>
+					<div class="column">
+						<p>{{sdetails}}</p>
+						<p>Total Orders!</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totalsales" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+			<div class="total-customers">
+				<div class="cus-img card-3">
+					<span><i class="fas fa-money"></i></span>
+					<div class="column">
+						<p>7</p>
+						<p>Last 30 Days Income!</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totalincome" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+			<div class="total-customers">
+				<div class="cus-img card-4">
+					<span><i class="fas fa-inr"></i></span>
+					<div class="column">
+						<p>{{expenses}}</p>
+						<p>Last 30 Days Expenses!</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totalexpenses" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+			<div class="total-customers">
+				<div class="cus-img card-5">
+					<span><i class="fas fa-egg"></i></span>
+					<div class="column">
+						<p>200</p>
+						<p>Total Available Eggs</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totaleggs" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+			<div class="total-customers">
+				<div class="cus-img card-6">
+					<span><i class="fas fa-chicken"></i></span>
+					<div class="column">
+						<p>{{totalchicken}}</p>
+						<p>Total Balance Chicken!</p>
+					</div>
+				</div>
+				<a routerLink="/navbar/totalchicken" class="show-all">
+					<p>View Details</p>
+					<p><i class="fas fa-arrow-circle-right"></i></p>
+				</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
