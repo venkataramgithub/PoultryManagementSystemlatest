@@ -91,6 +91,9 @@ table tbody td button{
 	padding:2px 5px;
 	border: 1px solid rgba(0, 0, 0,.3);
 }
+table tbody td button a{
+	color: white;
+}
 table .edit{
 	background: green;
 	color: white;

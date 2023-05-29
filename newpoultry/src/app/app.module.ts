@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,6 +26,19 @@ import { MainService } from './main.service';
 import { InsertService } from './navbar/insert.service';
 import { CrudService } from './navbar/crud.service';
 
+import { BirdspurchasedeleteComponent } from './navbar/birdspurchasedelete/birdspurchasedelete.component';
+import { BirdsalesdeleteComponent } from './navbar/birdsalesdelete/birdsalesdelete.component';
+import { DailypricesdeleteComponent } from './navbar/dailypricesdelete/dailypricesdelete.component';
+import { EggproductiondeleteComponent } from './navbar/eggproductiondelete/eggproductiondelete.component';
+import { EggsalesdeleteComponent } from './navbar/eggsalesdelete/eggsalesdelete.component';
+import { EmployeedeleteComponent } from './navbar/employeedelete/employeedelete.component';
+import { FeedconsumptiondeleteComponent } from './navbar/feedconsumptiondelete/feedconsumptiondelete.component';
+import { FeedpurchasedeleteComponent } from './navbar/feedpurchasedelete/feedpurchasedelete.component';
+import { MortalitydeleteComponent } from './navbar/mortalitydelete/mortalitydelete.component';
+import { PayrolldeleteComponent } from './navbar/payrolldelete/payrolldelete.component';
+import { PurchasepersondeleteComponent } from './navbar/purchasepersondelete/purchasepersondelete.component';
+import { SalespersondeleteComponent } from './navbar/salespersondelete/salespersondelete.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +57,18 @@ import { CrudService } from './navbar/crud.service';
     PayRollComponent,
     DailyPricesComponent,
     EmployeesComponent,
+    BirdspurchasedeleteComponent,
+    BirdsalesdeleteComponent,
+    DailypricesdeleteComponent,
+    EggproductiondeleteComponent,
+    EggsalesdeleteComponent,
+    EmployeedeleteComponent,
+    FeedconsumptiondeleteComponent,
+    FeedpurchasedeleteComponent,
+    MortalitydeleteComponent,
+    PayrolldeleteComponent,
+    PurchasepersondeleteComponent,
+    SalespersondeleteComponent,
   ],
   imports: [
     BrowserModule,

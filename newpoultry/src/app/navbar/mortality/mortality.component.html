@@ -7,7 +7,7 @@
 </head>
 <body>
 	<section>
-		<div class="eggsales" #test1>
+		<div class="eggsales" id="eggsales">
 			<form method="post" [formGroup]="formdata" (ngSubmit)="mortality(formdata.value)">
 				<div class="form-group">
 					<label>Number of Deaths</label>
@@ -20,7 +20,7 @@
 				<button>Save</button>
 			</form>
 		</div>
-		<div class="eggsales-update" #test>
+		<div class="eggsales-update" id="eggsales-update">
 			<form method="post">
 				<div class="form-group">
 					<label>Number of Deaths</label>
@@ -63,7 +63,7 @@
 						<td>{{mort.sl}}</td>
 						<td>{{mort.NumberofDeaths}}</td>
 						<td>{{mort.Date|date:'shortDate'}}</td>
-						<td><button class="edit"><a routerLink="/navbar/Mortality/{{mort.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+						<td><button class="edit"><a routerLink="/navbar/Mortality/{{mort.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><a routerLink="/navbar/Mortalitydelete/{{mort.sl}}"><i class="fas fa-trash"></i></a></button></td>
 					</tr>
 				</tbody>
 			</table>

@@ -3,6 +3,8 @@ import { FormGroup,FormControl } from '@angular/forms';
 import { InsertService } from '../insert.service';
 import { CrudService } from '../crud.service';
 import { expense } from '../Models/expense.model';
+import { MainService } from '../../main.service';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pay-roll',
@@ -14,9 +16,14 @@ export class PayRollComponent implements OnInit {
   Expense:expense[];
   searchdata;
   row='';
-  constructor(private service:InsertService,private crudservice:CrudService) { }
-
+  gettedupdatedata:any={};
+  sl;
+  data={};
+  updatedata={};
+  constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
+  
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       employeename:new FormControl(""),
       expensename:new FormControl(""),
@@ -27,9 +34,26 @@ export class PayRollComponent implements OnInit {
       fromdate:new FormControl(""),
       todate:new FormControl("")
     });
+    this.route.paramMap.subscribe(params=>{
+      this.sl=params.get('id');
+      if(this.sl){
+       document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
+        this.getupdatedata();
+      }
+      else{
+       document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
+      }
+    });
     this.Getpayroll();
   }
 
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
   payroll(data){
     this.service.payrollservice(data).subscribe((response)=>{
       if(response.submit==true){
@@ -76,4 +100,38 @@ export class PayRollComponent implements OnInit {
     this.Getpayroll();
     this.row='';
   }
+
+  getupdatedata(){
+    this.data={id:this.sl};
+    this.mainservice.getupdatepayrollservice(this.data).subscribe((response)=>{
+      this.gettedupdatedata=response.result[0];
+      this.updatedata={
+        id:this.sl,
+        employeename:this.gettedupdatedata.EmployeeName,
+        expensename:this.gettedupdatedata.ExpenseName,
+        amount:this.gettedupdatedata.Amount,
+        date:this.gettedupdatedata.Date,
+      };
+    },
+    (error)=>{
+      alert(error.err);
+    });
+  }
+
+  Updateeggsales(){
+    this.mainservice.Updatepayrollservice(this.updatedata).subscribe((response)=>{
+      if(response.submit==true){
+        alert("Updated Successfully");
+        this.router.navigate(['/navbar/PayRoll']);
+
+      }
+      else{
+        alert("Not Updated");
+      }
+    },
+    (error)=>{
+      alert(error.err);
+    });
+  }
+  
 }

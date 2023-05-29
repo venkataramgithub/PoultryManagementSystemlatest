@@ -17,6 +17,19 @@ section{
 	border-radius: 5px;
 	background: white;
 }
+.eggsales-update{
+	width: 800px;
+	height:380px;
+	background: white;
+	display:none;
+	padding:20px 140px;
+}
+.eggsales-update form{
+	width: 650px;
+	padding: 15px;
+	border:2px solid rgba(0, 0, 0,0.1);
+	border-radius: 5px;
+}
 .eggsales-update form{
 	margin:35px 150px;
 	width: 650px;
@@ -25,7 +38,7 @@ section{
 	border-radius: 5px;
 	background: white;
 }
-.eggsales form .form-group{
+.eggsales form .form-group,.eggsales-update form .form-group{
 	display: flex;
 	flex-direction: column;
 	margin:5px 0px;
@@ -41,7 +54,7 @@ section{
 	height: 20px;
 	padding:6px;
 }
-.eggsales form button{
+.eggsales form button,.eggsales-update form button{
 	margin:8px;
 	background: green;
 	color: white;
@@ -85,6 +98,9 @@ table tbody td button{
 	margin:2px 5px;
 	padding:2px 5px;
 	border: 1px solid rgba(0, 0, 0,.3);
+}
+table tbody td button a{
+	color: white;
 }
 table .edit{
 	background: green;

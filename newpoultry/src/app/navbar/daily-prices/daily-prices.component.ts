@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { InsertService } from '../insert.service';
 import { FormGroup,FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CrudService } from '../crud.service';
 import { dailyprices } from '../Models/dailyprices.model';
+import { MainService } from '../../main.service';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-daily-prices',
@@ -15,9 +16,14 @@ export class DailyPricesComponent implements OnInit {
   Dailyprices:dailyprices[];
   searchdata;
   row='';
-  constructor(private service:InsertService,private router:Router,private crudservice:CrudService) { }
+  gettedupdatedata:any={};
+  sl;
+  data={};
+  updatedata={};
 
+  constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       date:new FormControl(""),
       chickenprice:new FormControl(""),
@@ -27,9 +33,25 @@ export class DailyPricesComponent implements OnInit {
       fromdate:new FormControl(""),
       todate:new FormControl("")
     })
+    this.route.paramMap.subscribe(params=>{
+      this.sl=params.get('id');
+      if(this.sl){
+        document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
+        this.getupdatedata();
+      }
+      else{
+        document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
+      }
+    });
     this.Getdailyprices();
   }
-
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
   dailyprices(data){
     this.service.dailypricesservice(data).subscribe((response)=>{
       if(response.submit==true){
@@ -76,4 +98,36 @@ export class DailyPricesComponent implements OnInit {
     this.Getdailyprices();
     this.row='';
   }
+  getupdatedata(){
+    this.data={id:this.sl};
+    this.mainservice.getupdatedailypricesservice(this.data).subscribe((response)=>{
+      this.gettedupdatedata=response.result[0];
+      this.updatedata={
+        id:this.sl,
+        date:this.gettedupdatedata.date,
+        eggprice:this.gettedupdatedata.EggPrice,
+        chickenprice:this.gettedupdatedata.ChickenPrice,
+      };
+    },
+    (error)=>{
+      alert(error.err);
+    });
+  }
+
+  Updateeggsales(){
+    this.mainservice.Updatedailypricesservice(this.updatedata).subscribe((response)=>{
+      if(response.submit==true){
+        alert("Updated Successfully");
+        this.router.navigate(['/navbar/DailyPrices']);
+
+      }
+      else{
+        alert("Not Updated");
+      }
+    },
+    (error)=>{
+      alert(error.err);
+    });
+  } 
+  
 }

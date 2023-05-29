@@ -94,4 +94,10 @@ export class InsertService {
   public searchdailypricesservice(data):Observable<any>{
     return this.http.post("http://localhost:3000/searchdailypricesapi",data);
   }
+  public getdailypricesservice():Observable<any>{
+    return this.http.get("http://localhost:3000/getdashdailypricesapi");
+  }
+  public getbalancedetailsservice():Observable<any>{
+    return this.http.get("http://localhost:3000/getbalancesapi");
+  }
 }

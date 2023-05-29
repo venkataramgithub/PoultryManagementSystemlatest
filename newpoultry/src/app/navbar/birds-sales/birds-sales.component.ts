@@ -17,17 +17,16 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
   searchdata;
   searchid;
   row='';
-  id=0;
+  destroyid=0;
   gettedupdatedata:any={};
   sl;
   data={};
   updatedata={};
   constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
 
-  @ViewChild("test") d;
-  @ViewChild('test1') d1;
-  @ViewChild('destroy') m;
+  @ViewChild('destroy',{static:false}) m;
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       id:new FormControl(""),
       noofchicks:new FormControl(""),
@@ -44,21 +43,25 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
     this.route.paramMap.subscribe(params=>{
       this.sl=params.get('id');
       if(this.sl){
-        this.d.nativeElement.style.display="block";
-        this.d1.nativeElement.style.display="none";
+        document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
         this.getupdatedata();
       }
       else{
-        this.d.nativeElement.style.display="none";
-        this.d1.nativeElement.style.display="block";
+        document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
       }
     });
     this.Getbirdsales();
   }
-
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
   ngOnDestroy(){
-    if(this.id){
-      clearInterval(this.id);
+    if(this.destroyid){
+      clearInterval(this.destroyid);
     }
   }
   birdsale(data){
@@ -94,6 +97,7 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
       if(response.result.length>0){
         this.Birdsales=response.result;
         this.searchdata.reset();
+        this.row='';
       }
       else{
         this.Birdsales=response.result;
@@ -108,7 +112,7 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
   }
 
   searchiddata(data){
-    this.id=setInterval(()=>{
+    this.destroyid=setInterval(()=>{
       if(!this.m.nativeElement.value){
         this.Getbirdsales();
         this.row='';
@@ -129,8 +133,8 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
   }
 
   destroyinterval(){
-    if(this.id){
-      clearInterval(this.id);
+    if(this.destroyid){
+      clearInterval(this.destroyid);
     }
   }
 
@@ -165,4 +169,5 @@ export class BirdsSalesComponent implements OnInit,OnDestroy{
       alert(error.err);
     });
   }
+  
 }

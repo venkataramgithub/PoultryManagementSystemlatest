@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup,FormControl } from "@angular/forms";
 import { InsertService } from '../insert.service';
 import { CrudService } from '../crud.service';
@@ -21,9 +21,9 @@ export class MortalityComponent implements OnInit {
   data={};
   updatedata={};
   constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
-  @ViewChild('test') d;
-  @ViewChild('test1') d1;
+  
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       numberofdeaths:new FormControl(""),
       date:new FormControl("")
@@ -35,18 +35,22 @@ export class MortalityComponent implements OnInit {
     this.route.paramMap.subscribe(params=>{
       this.sl=params.get('id');
       if(this.sl){
-        this.d.nativeElement.style.display="block";
-        this.d1.nativeElement.style.display="none";
+        document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
         this.getupdatedata();
       }
       else{
-        this.d.nativeElement.style.display="none";
-        this.d1.nativeElement.style.display="block";
+        document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
       }
     });
     this.Getmortality();
   }
-
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
   mortality(data){
     this.service.mortalityservice(data).subscribe((response)=>{
       if(response.submit==true){
@@ -79,6 +83,7 @@ export class MortalityComponent implements OnInit {
     this.service.searchmoratalityservice(data).subscribe((response)=>{
       if(response.result.length>0){
         this.Mortality=response.result;
+        this.row="";
       }
       else{
         this.Mortality=response.result;
@@ -123,4 +128,5 @@ export class MortalityComponent implements OnInit {
       alert(error.err);
     });
   }
+  
 }

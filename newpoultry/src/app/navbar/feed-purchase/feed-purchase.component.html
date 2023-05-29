@@ -7,7 +7,7 @@
 </head>
 <body>
 	<section>
-		<div class="eggsales" #test1>
+		<div class="eggsales" id="eggsales">
 			<form method="post" [formGroup]="formdata" (ngSubmit)="feedpurchase(formdata.value)">
 				<div class="form-group">
 					<label>Feed Quantity</label>
@@ -24,7 +24,7 @@
 				<button>Save</button>
 			</form>
 		</div>
-		<div class="eggsales-update" #test>
+		<div class="eggsales-update" id="eggsales-update">
 			<form method="post">
 				<div class="form-group">
 					<label>Feed Quantity</label>
@@ -58,7 +58,7 @@
 						<td>{{feed.Quantity}}</td>
 						<td>{{feed.Price}}</td>
 						<td>{{feed.Date|date:'shortDate'}}</td>
-						<td><button class="edit"><a routerLink="/navbar/FeedPurchase/{{feed.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><i class="fas fa-trash"></i></button></td>
+						<td><button class="edit"><a routerLink="/navbar/FeedPurchase/{{feed.sl}}"><i class="fas fa-edit"></i></a></button><button class="delete"><a routerLink="/navbar/FeedPurchasedelete/{{feed.sl}}"><i class="fas fa-trash"></i></a></button></td>
 					</tr>
 				</tbody>
 			</table>

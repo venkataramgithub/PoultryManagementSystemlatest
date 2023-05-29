@@ -16,6 +16,19 @@ import { PayRollComponent } from './navbar/pay-roll/pay-roll.component';
 import { DailyPricesComponent } from './navbar/daily-prices/daily-prices.component';
 import { EmployeesComponent } from './navbar/employees/employees.component';
 
+import { BirdspurchasedeleteComponent } from './navbar/birdspurchasedelete/birdspurchasedelete.component';
+import { BirdsalesdeleteComponent } from './navbar/birdsalesdelete/birdsalesdelete.component';
+import { DailypricesdeleteComponent } from './navbar/dailypricesdelete/dailypricesdelete.component';
+import { EggproductiondeleteComponent } from './navbar/eggproductiondelete/eggproductiondelete.component';
+import { EggsalesdeleteComponent } from './navbar/eggsalesdelete/eggsalesdelete.component';
+import { EmployeedeleteComponent } from './navbar/employeedelete/employeedelete.component';
+import { FeedconsumptiondeleteComponent } from './navbar/feedconsumptiondelete/feedconsumptiondelete.component';
+import { FeedpurchasedeleteComponent } from './navbar/feedpurchasedelete/feedpurchasedelete.component';
+import { MortalitydeleteComponent } from './navbar/mortalitydelete/mortalitydelete.component';
+import { PayrolldeleteComponent } from './navbar/payrolldelete/payrolldelete.component';
+import { PurchasepersondeleteComponent } from './navbar/purchasepersondelete/purchasepersondelete.component';
+import { SalespersondeleteComponent } from './navbar/salespersondelete/salespersondelete.component';
+
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -41,6 +54,25 @@ const routes: Routes = [
       {path:'BirdsPurchase/:id',component:BirdsPurchaseComponent},
       {path:'Mortality/:id',component:MortalityComponent},
       {path:'FeedPurchase/:id',component:FeedPurchaseComponent},
+      {path:'FeedConsumption/:id',component:FeedConsumptionComponent},
+      {path:'PurchasePerson/:id',component:PurchasePersonDetailsComponent},
+      {path:'SalesPerson/:id',component:SalesPersonDetailsComponent},
+      {path:'PayRoll/:id',component:PayRollComponent},
+      {path:'DailyPrices/:id',component:DailyPricesComponent},
+      {path:'Employees/:id',component:EmployeesComponent},
+
+      {path:'EggSalesdelete/:deleteid',component:EggsalesdeleteComponent},
+      {path:'EggProductiondelete/:deleteid',component:EggproductiondeleteComponent},
+      {path:'BirdsSalesdelete/:deleteid',component:BirdsalesdeleteComponent},
+      {path:'BirdsPurchasedelete/:deleteid',component:BirdspurchasedeleteComponent},
+      {path:'Mortalitydelete/:deleteid',component:MortalitydeleteComponent},
+      {path:'FeedPurchasedelete/:deleteid',component:FeedpurchasedeleteComponent},
+      {path:'FeedConsumptiondelete/:deleteid',component:FeedconsumptiondeleteComponent},
+      {path:'PurchasePersondelete/:deleteid',component:PurchasepersondeleteComponent},
+      {path:'SalesPersondelete/:deleteid',component:SalespersondeleteComponent},
+      {path:'PayRolldelete/:deleteid',component:PayrolldeleteComponent},
+      {path:'DailyPricesdelete/:deleteid',component:DailypricesdeleteComponent},
+      {path:'Employeesdelete/:deleteid',component:EmployeedeleteComponent},
     ]
   },
 ];

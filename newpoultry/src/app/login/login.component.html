@@ -8,18 +8,22 @@
 </head>
 <body>
 	<section>
+		<div class="header">
+			<img src="../assets/hen.png">
+			<h2>Famous</h2>
+			<p>Poultry Form</p>
+		</div>
 		<div class="login-form">
 			<p>Login As Admin</p>
-			<form method="post">
+			<form method="post" [formGroup]="formdata" (ngSubmit)="login(formdata.value)">
 				<div class="form-group">
 					<i class="fas fa-user"></i>
-					<input type="text" name="username" placeholder="Enter Username of Id">
+					<input type="text" name="username" formControlName="username" placeholder="Enter Username of Id">
 				</div>
 				<div class="form-group">
 					<i class="fas fa-key"></i>
-					<input type="password" name="password" placeholder="Enter Password">
+					<input type="password" name="password" formControlName="password" placeholder="Enter Password">
 				</div>
-				<i class="fas fa-eye" id="eye"></i>
 				<button>Login</button>
 			</form>
 		</div>

@@ -23,11 +23,9 @@ export class BirdsPurchaseComponent implements OnInit {
   data={};
   updatedata={};
   constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
-
-  @ViewChild('test') d;
-  @ViewChild('test1') d1;
-  @ViewChild('destroy') m;
+  @ViewChild('destroy',{static:false}) m;
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       id:new FormControl(""),
       noofchicks:new FormControl(""),
@@ -44,18 +42,27 @@ export class BirdsPurchaseComponent implements OnInit {
     this.route.paramMap.subscribe(params=>{
       this.sl=params.get('id');
       if(this.sl){
-        this.d.nativeElement.style.display="block";
-        this.d1.nativeElement.style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
+        document.getElementById('eggsales').style.display="none";
         this.getupdatedata();
       }
       else{
-        this.d.nativeElement.style.display="none";
-        this.d1.nativeElement.style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
+        document.getElementById('eggsales').style.display="block";
       }
     });
     this.Getbirdspurchase();
   }
-
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
+  ngOnDestroy(){
+    if(this.destroyid){
+      clearInterval(this.destroyid);
+    }
+  }
   birdspurchase(data){
     this.service.birdspurchaseservice(data).subscribe((response)=>{
       if(response.submit==true){
@@ -84,11 +91,12 @@ export class BirdsPurchaseComponent implements OnInit {
   }
 
   searchbirdpurchase(data){
-    this.destronsearch();
+    this.destroyinterval();
     this.service.searchbirdpurchaseservice(data).subscribe((response)=>{
       if(response.result.length>0){
         this.Birdsales=response.result; 
         this.searchdata.reset();
+        this.row='';
       }
       else{
         this.Birdsales=response.result;
@@ -103,7 +111,6 @@ export class BirdsPurchaseComponent implements OnInit {
 
   searchiddata(data){
     this.destroyid=setInterval(()=>{
-      console.log(this.m.nativeElement.value);
       if(!this.m.nativeElement.value){
         this.Getbirdspurchase();
         this.row='';
@@ -123,14 +130,8 @@ export class BirdsPurchaseComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(){
+  destroyinterval(){
     if(this.destroyid){
-      clearInterval(this.destroyid);
-    }
-  }
-
-  destronsearch(){
-     if(this.destroyid){
       clearInterval(this.destroyid);
     }
   }
@@ -166,4 +167,5 @@ export class BirdsPurchaseComponent implements OnInit {
       alert(error.err);
     });
   }
+  
 }

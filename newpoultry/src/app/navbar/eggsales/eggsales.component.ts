@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,OnDestroy } from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
 import { InsertService } from '../insert.service';
 import { CrudService } from '../crud.service';
@@ -22,9 +22,8 @@ export class EggsalesComponent implements OnInit{
   updatedata={};
   constructor(private service:InsertService,private crudservice:CrudService,private route:ActivatedRoute,private mainservice:MainService,private router:Router) { }
 
-  @ViewChild('test') d;
-  @ViewChild('test1') d1;
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       id:new FormControl(""),
       numberofeggs:new FormControl(""),
@@ -38,17 +37,22 @@ export class EggsalesComponent implements OnInit{
     this.route.paramMap.subscribe(params=>{
       this.id=params.get('id');
       if(this.id){
-        this.d.nativeElement.style.display="block";
-        this.d1.nativeElement.style.display="none";
+        document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
         this.getupdatedata();
       }
       else{
-        this.d.nativeElement.style.display="none";
-        this.d1.nativeElement.style.display="block";
+        document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
       }
     });
     this.Geteggsales();
    
+  }
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
   }
   eggsales(data){
     this.service.eggsalesservice(data).subscribe((response)=>{

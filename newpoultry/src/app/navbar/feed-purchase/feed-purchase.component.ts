@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
 import { InsertService } from '../insert.service';
 import { CrudService } from '../crud.service';
@@ -19,9 +19,9 @@ export class FeedPurchaseComponent implements OnInit {
   data={};
   updatedata={};
   constructor(private service:InsertService,private crudservice:CrudService,private mainservice:MainService,private route:ActivatedRoute,private router:Router) { }
-  @ViewChild('test') d;
-  @ViewChild('test1') d1;
+ 
   ngOnInit() {
+    this.checklogin();
     this.formdata=new FormGroup({
       quantity:new FormControl(""),
       price:new FormControl(""),
@@ -30,18 +30,22 @@ export class FeedPurchaseComponent implements OnInit {
     this.route.paramMap.subscribe(params=>{
       this.sl=params.get('id');
       if(this.sl){
-        this.d.nativeElement.style.display="block";
-        this.d1.nativeElement.style.display="none";
+        document.getElementById("eggsales").style.display="none";
+        document.getElementById("eggsales-update").style.display="block";
         this.getupdatedata();
       }
       else{
-        this.d.nativeElement.style.display="none";
-        this.d1.nativeElement.style.display="block";
+        document.getElementById("eggsales").style.display="block";
+        document.getElementById("eggsales-update").style.display="none";
       }
     });
     this.Getfeedpurchase();
   }
-
+  checklogin(){
+    if(sessionStorage.length==0){
+      this.router.navigate(["/"]);
+    }
+  }
   feedpurchase(data){
     this.service.feedpurchaseservice(data).subscribe((response)=>{
       if(response.submit==true){
@@ -99,4 +103,5 @@ export class FeedPurchaseComponent implements OnInit {
       alert(error.err);
     });
   }
+  
 }
